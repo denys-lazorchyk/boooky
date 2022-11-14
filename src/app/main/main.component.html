@@ -1,1 +1,52 @@
-<p>main works!</p>
+<div class="boooky-container">
+  <h1>Top books:</h1>
+</div>
+<div
+  id="carouselBooks"
+  class="boooky-container carousel carousel-dark slide"
+  data-bs-ride="carousel"
+  data-bs-touch="true"
+>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <a href="">
+        <img src="assets/main/1.png" class="d-block w-100" alt="LOTR" />
+      </a>
+    </div>
+    <div class="carousel-item">
+      <a href="">
+        <img src="assets/main/2.png" class="d-block w-100" alt="HGTG" />
+      </a>
+    </div>
+    <div class="carousel-item">
+      <a href="">
+        <img src="assets/main/3.png" class="d-block w-100" alt="COM" />
+      </a>
+    </div>
+  </div>
+  <button
+    class="carousel-control-prev"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button
+    class="carousel-control-next"
+    type="button"
+    data-bs-target="#carouselExampleControls"
+    data-bs-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="boooky-container search">
+  <h1>Search for something interesting...</h1>
+  <div>
+    <app-search></app-search>
+  </div>
+</div>
