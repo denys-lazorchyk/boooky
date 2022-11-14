@@ -1,0 +1,58 @@
+.links {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 12px;
+
+}
+
+.link {
+  margin-right: 10px;
+  cursor: pointer;
+}
+
+.menu {
+  &__holder {
+    display: flex;
+  }
+
+  &__user {
+    border-left: 2px solid black;
+    cursor: pointer;
+    p {
+      margin: 0px 5px;
+      display: inline-block;
+      line-height: normal;
+    }
+
+    .user {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .user-name {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .user-role {
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    mat-icon {
+      margin-left: 10px;
+      height: 30px;
+      width: 30px;
+      font-size: 30px;
+    }
+  }
+
+  &-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 0px;
+  }
+}
