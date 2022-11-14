@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+  --yellow_dark: rgb(219, 188, 9);
+  --yellow_light: rgb(248, 238, 179);
+  --red: rgb(245, 104, 104);
+}
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  position: relative;
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.mat-raised-button {
+  background-color: var(--yellow_dark);
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: white;
+  font-weight: 500;
+}
+
+.mat-button {
+}

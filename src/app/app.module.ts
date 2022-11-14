@@ -1,38 +1,50 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+//Imported components
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BookComponent } from './shared/book/book.component';
 import { BookItemComponent } from './shared/book-item/book-item.component';
 import { SearchComponent } from './shared/search/search.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
-import { BookListComponent } from './books/book-list/book-list.component';
 import { BooksListComponent } from './books/books-list/books-list.component';
 import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login/login.component';
+import { MainComponent } from './main/main.component';
+import { AnimatedBackgroundComponent } from './shared/animated-background/animated-background.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Angular Material Library
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    BookComponent,
     BookItemComponent,
     SearchComponent,
     EditBookComponent,
     BookDetailComponent,
-    BookListComponent,
     BooksListComponent,
     HeaderComponent,
     MenuComponent,
-    LoginComponent
+    LoginComponent,
+    MainComponent,
+    AnimatedBackgroundComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatMenuModule,
+    MatIconModule,
+    MatButtonModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
