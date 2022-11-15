@@ -21,6 +21,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { AppShellComponent } from './app-shell/app-shell.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { MatInputModule } from '@angular/material/input';
     LoginComponent,
     MainComponent,
     AnimatedBackgroundComponent,
+    PageNotFoundComponent,
+    AppShellComponent,
   ],
   imports: [
     BrowserModule,
