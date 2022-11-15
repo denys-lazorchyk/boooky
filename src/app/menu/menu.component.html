@@ -1,7 +1,7 @@
 <div class="menu__holder">
   <div class="links">
-    <a class="link" mat-button>Book Lists</a>
-    <a class="link" mat-button>Add Book</a>
+    <a routerLink="./addBook" routerLinkActive="active" class="link" mat-button>Book Lists</a>
+    <a routerLink="./lists" routerLinkActive="active" class="link" mat-button>Add Book</a>
   </div>
   <div [matMenuTriggerFor]="menu" class="menu__user">
     <div class="menu-button">

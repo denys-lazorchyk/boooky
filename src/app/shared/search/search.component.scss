@@ -19,7 +19,7 @@ $color-bk: var(--yellow_dark);
   left: 50%;
   transform: rotate(12deg) scale(0.7) translateX(-50%);
 
-  transition-property: opacity, transform, height;
+  transition-property: opacity, transform, height, left;
   transition-duration: calc($speed * 1s);
   transition-timing-function: $ease;
 
@@ -74,7 +74,8 @@ $color-bk: var(--yellow_dark);
     width: calc(($height * 0.5px) - ($border * 1px));
     height: calc(($height * 1px) - ($border * 2px));
     display: block;
-    top: calc($height * 1px);
+    // top: calc($height * 1px);
+    top: 0;
     border-color: white;
     position: absolute;
     background-color: $color-bk;
@@ -86,14 +87,14 @@ $color-bk: var(--yellow_dark);
     right: 100%;
     border-radius: 2em 0 0 2em;
     border-right: none;
-    transform: translateX(calc($width * 0.3px));
+    transform: translateX(calc($width * 0.5px));
   }
 
   &:after {
     left: 100%;
     border-radius: 0 2em 2em 0;
     border-left: none;
-    transform: translateX(calc($width * -0.7px));
+    transform: translateX(calc($width * -0.5px));
   }
 
   .sticks {
@@ -115,13 +116,16 @@ $color-bk: var(--yellow_dark);
       position: absolute;
       content: "";
       background-color: white;
-      left: calc($width * -0.2px);
-      bottom: calc($width * 0.05px);
+      // left: calc($width * -0.2px);
+      left: 2px;
+      // bottom: calc($width * 0.05px);
+      bottom: -8.75px;
     }
   }
 
   &:focus-within {
     transform: rotate(0deg) translatey(-10px) translateX(-50%);
+    left: 50%;
 
     .center {
       transform: scalex(1);

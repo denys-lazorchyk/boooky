@@ -86,6 +86,17 @@ h6 {
 }
 
 .mat-button {
+  &:hover {
+    color: var(--yellow_dark) !important;
+  }
+
+  &.active {
+    color: var(--yellow_dark);
+
+    .mat-button-focus-overlay {
+      opacity: 0.04;
+    }
+  }
 }
 
 .boooky-container {
