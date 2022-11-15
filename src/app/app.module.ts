@@ -26,6 +26,7 @@ import { AppShellComponent } from './app-shell/app-shell.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { IfHasRoleDirective } from './services/if-has-role.directive';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     AnimatedBackgroundComponent,
     PageNotFoundComponent,
     AppShellComponent,
+    IfHasRoleDirective,
   ],
   imports: [
     BrowserModule,

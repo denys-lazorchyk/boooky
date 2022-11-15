@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -7,15 +8,22 @@ import { AuthService } from '../auth/auth.service';
   styleUrls: ['./menu.component.scss'],
 })
 export class MenuComponent implements OnInit {
-  name: string;
-  role: string;
+  name!: string;
+  role!: string;
 
-  constructor(private authService: AuthService) {
-    this.name = 'John Smith';
-    this.role = 'User';
+  constructor(
+    private authService: AuthService,
+    private userService: UserService
+  ) {}
+
+  ngOnInit(): void {
+    if (this.userService.user) {
+      this.name = `${this.userService.user.name} ${this.userService.user.surname}`;
+      this.role = this.userService.user.role;
+    } else {
+      this.authService.logOut();
+    }
   }
-
-  ngOnInit(): void {}
 
   logOut() {
     this.authService.logOut();

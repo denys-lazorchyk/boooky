@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
 import { MockLoginService } from 'src/app/services/mock-login.service';
+import { UserService } from 'src/app/services/user.service';
 
 export interface validationMessagesInterface {
   [key: string]: { type: string; message: string }[];
@@ -33,6 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     private formBuilder: FormBuilder,
     private loginService: MockLoginService,
     private authService: AuthService,
+    private userService: UserService,
     private router: Router
   ) {
     this.form = this.formBuilder.group({
@@ -57,6 +59,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (res?.responseCode === 200) {
           this.authService.setToken(res?.jwt);
           this.router.navigate(['/app']);
+          this.userService.user = res?.user;
         } else {
           this.snackbar.open(
             'Unable to authenticate user. Please try again!',

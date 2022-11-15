@@ -1,31 +1,37 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { User } from '../models/user';
+import { User, UserShort } from '../models/user';
 
 const users: User[] = [
   {
-    name: 'Denys',
-    surname: 'Lazorchyk',
-    role: 'administrator',
     login: 'denysLazorchyk',
     password: 'password',
-    id: '1',
+    details: {
+      name: 'Denys',
+      surname: 'Lazorchyk',
+      role: 'admin',
+      id: '1',
+    },
   },
   {
-    name: 'John',
-    surname: 'Smith',
-    role: 'user',
     login: 'crido.admin',
     password: 'TopSecret',
-    id: '2',
+    details: {
+      name: 'John',
+      surname: 'Smith',
+      role: 'user',
+      id: '2',
+    },
   },
   {
-    name: 'Adam',
-    surname: 'Śnieg',
-    role: 'user',
     login: 'adamSnow',
     password: '42424242',
-    id: '3',
+    details: {
+      name: 'Adam',
+      surname: 'Śnieg',
+      role: 'user',
+      id: '3',
+    },
   },
 ];
 
@@ -51,7 +57,7 @@ export class MockLoginService {
           sub.next({
             responseCode,
             jwt: this.makeJWT(27),
-            user: users[userId],
+            user: users[userId].details,
           });
         } else {
           sub.next({ responseCode: 401 });

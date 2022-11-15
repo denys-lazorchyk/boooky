@@ -6,6 +6,7 @@ import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { BooksListComponent } from './books/books-list/books-list.component';
 import { LoginComponent } from './login/login/login.component';
 import { MainComponent } from './main/main.component';
+import { RolesGuard } from './services/roles.guard';
 import { BookItemComponent } from './shared/book-item/book-item.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 
@@ -22,7 +23,11 @@ const routes: Routes = [
       { path: 'edit/:id', component: BookDetailComponent },
       { path: 'book/:id', component: BookItemComponent },
       { path: 'addBook', component: BookDetailComponent },
-      { path: 'lists', component: BooksListComponent },
+      {
+        path: 'lists',
+        component: BooksListComponent,
+        canActivate: [RolesGuard],
+      },
     ],
   },
   { path: '**', redirectTo: '/404', pathMatch: 'full' },
@@ -32,6 +37,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
-  providers: [AuthGuard],
+  providers: [AuthGuard, RolesGuard],
 })
 export class AppRoutingModule {}
