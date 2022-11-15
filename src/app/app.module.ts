@@ -23,6 +23,9 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { AppShellComponent } from './app-shell/app-shell.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -48,6 +51,9 @@ import { AppShellComponent } from './app-shell/app-shell.component';
     MatIconModule,
     MatButtonModule,
     MatInputModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
