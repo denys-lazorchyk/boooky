@@ -13,7 +13,7 @@
     </div>
   </div>
   <mat-menu #menu="matMenu" xPosition="after">
-    <button mat-menu-item>
+    <button mat-menu-item (click)="logOut()">
       <mat-icon>cancel</mat-icon>
       <span>Log out</span>
     </button>

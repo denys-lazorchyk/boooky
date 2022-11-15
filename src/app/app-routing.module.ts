@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppShellComponent } from './app-shell/app-shell.component';
+import { AuthGuard } from './auth/auth.guard';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { BooksListComponent } from './books/books-list/books-list.component';
 import { LoginComponent } from './login/login/login.component';
@@ -14,6 +15,8 @@ const routes: Routes = [
   {
     path: 'app',
     component: AppShellComponent,
+    canActivate: [AuthGuard],
+    canActivateChild: [AuthGuard],
     children: [
       { path: '', component: MainComponent },
       { path: 'edit/:id', component: BookDetailComponent },
@@ -29,5 +32,6 @@ const routes: Routes = [
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
+  providers: [AuthGuard],
 })
 export class AppRoutingModule {}

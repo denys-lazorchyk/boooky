@@ -1,6 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/app/auth/auth.service';
+import { MockLoginService } from 'src/app/services/mock-login.service';
 
 export interface validationMessagesInterface {
   [key: string]: { type: string; message: string }[];
@@ -11,7 +15,8 @@ export interface validationMessagesInterface {
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
+  loginSub!: Subscription;
   form: FormGroup;
   validationMessages: validationMessagesInterface = {
     password: [
@@ -23,7 +28,13 @@ export class LoginComponent implements OnInit {
     ],
   };
 
-  constructor(public snackbar: MatSnackBar, private formBuilder: FormBuilder) {
+  constructor(
+    public snackbar: MatSnackBar,
+    private formBuilder: FormBuilder,
+    private loginService: MockLoginService,
+    private authService: AuthService,
+    private router: Router
+  ) {
     this.form = this.formBuilder.group({
       username: ['', [Validators.required, Validators.minLength(5)]],
       password: ['', [Validators.required, Validators.minLength(5)]],
@@ -32,9 +43,30 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  ngOnDestroy(): void {
+    this.loginSub?.unsubscribe();
+  }
+
   submitForm(event: Event) {
     event.preventDefault();
     event.stopPropagation();
+
+    this.loginSub = this.loginService
+      .checkAuthentication(this.username?.value, this.password?.value)
+      .subscribe((res: any) => {
+        if (res?.responseCode === 200) {
+          this.authService.setToken(res?.jwt);
+          this.router.navigate(['/app']);
+        } else {
+          this.snackbar.open(
+            'Unable to authenticate user. Please try again!',
+            'OK',
+            {
+              duration: 3000,
+            }
+          );
+        }
+      });
   }
 
   get username() {
