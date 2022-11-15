@@ -1,0 +1,19 @@
+.page404 {
+  height: calc(100vh - 50px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .card {
+    height: 400px;
+    width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 27px;
+    border: 5px dashed var(--yellow_dark);
+    box-shadow: 10px 14px 12px -11px rgba(66, 68, 90, 1);
+  }
+}

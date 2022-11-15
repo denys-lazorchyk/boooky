@@ -22,7 +22,8 @@ const routes: Routes = [
       { path: 'lists', component: BooksListComponent },
     ],
   },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/404', pathMatch: 'full' },
+  { path: '404', component: PageNotFoundComponent },
 ];
 
 @NgModule({

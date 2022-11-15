@@ -71,11 +71,18 @@ h6 {
   font-weight: 600 !important;
   padding: 10px;
 }
+
 .mat-raised-button {
   background-color: var(--yellow_dark);
   font-family: Roboto, "Helvetica Neue", sans-serif;
   color: white;
   font-weight: 500;
+
+  &.big-button {
+    line-height: 44px;
+    padding: 0px 23px;
+    font-size: 16px;
+  }
 }
 
 .mat-button {
