@@ -23,6 +23,7 @@ body {
   position: relative;
   width: 100%;
   padding-bottom: 50px;
+  min-height: calc(100vh - 50px);
 }
 
 a {
@@ -106,4 +107,35 @@ h6 {
   max-width: 1500px;
   width: 90vw;
   margin: 0px auto;
+}
+
+.notFound {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  .card {
+    min-height: 400px;
+    width: 600px;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 27px;
+    border: 5px dashed var(--yellow_dark);
+    box-shadow: 10px 14px 12px -11px rgba(66, 68, 90, 1);
+
+    h2 {
+      text-align: center;
+      margin: 0;
+    }
+
+    img {
+      height: 270px;
+      margin-bottom: 27px;
+    }
+  }
 }

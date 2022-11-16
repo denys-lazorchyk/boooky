@@ -1,1 +1,60 @@
-<p>book-detail works!</p>
+<div class="boooky-container book-holder">
+  <div *ngIf="foundBooks.length > 0; else emptyBook">
+    <h1>Book details:</h1>
+    <div class="book">
+      <div class="book__cover">
+        <img
+          src="{{ book.coverUrl ?? '/assets/book-cover-not-found.png' }}"
+          alt="book-cover"
+        />
+      </div>
+      <div class="book__details">
+        <h2>Specifics:</h2>
+        <div class="property">
+          <h3 class="name">Title:</h3>
+          <h2 class="value">{{ book.title }}</h2>
+        </div>
+        <div class="property" *ngIf="book.author">
+          <h4 class="name">Author:</h4>
+          <h3 class="value">{{ book.author }}</h3>
+        </div>
+        <div class="property" *ngIf="book.pageCount">
+          <h4 class="name">Page count:</h4>
+          <h3 class="value">{{ book.pageCount }}</h3>
+        </div>
+        <div class="property" *ngIf="book.publicationDate">
+          <h4 class="name">Publication date:</h4>
+          <h3 class="value">{{ book.publicationDate }}</h3>
+        </div>
+        <div class="property" *ngIf="book.rating">
+          <h4 class="name">Rating:</h4>
+          <h3 class="value">{{ book.rating }}</h3>
+        </div>
+        <div class="property" *ngIf="book.quote">
+          <h4 class="name">Quote:</h4>
+          <h3 class="value">{{ book.quote }}</h3>
+        </div>
+        <div class="property">
+          <h4 class="name">Description:</h4>
+          <p class="value">{{ book.description }}</p>
+        </div>
+        <button class="big-button" routerLink="/app" mat-raised-button>
+          <mat-icon>fast_rewind</mat-icon> Back
+        </button>
+      </div>
+    </div>
+    <div class="comments"></div>
+  </div>
+</div>
+<ng-template #emptyBook>
+  <div class="notFound">
+    <div class="card">
+      <img src="/assets/book-lover.svg" alt="" />
+      <h2>Not All Who Wander Are Lost)</h2>
+      <h3>Book was not found...</h3>
+      <button class="big-button" routerLink="/app" mat-raised-button>
+        <mat-icon>fast_rewind</mat-icon> Back
+      </button>
+    </div>
+  </div>
+</ng-template>

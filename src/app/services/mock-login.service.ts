@@ -19,7 +19,7 @@ const users: User[] = [
     details: {
       name: 'John',
       surname: 'Smith',
-      role: 'user',
+      role: 'admin',
       id: '2',
     },
   },
