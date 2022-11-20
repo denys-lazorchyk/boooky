@@ -1,45 +1,46 @@
-<div class="boooky-container book-holder">
-  <div *ngIf="foundBooks.length > 0; else emptyBook">
+<div class="boooky-container book-columns-holder">
+  <div *ngIf="foundBook; else emptyBook">
     <h1>Book details:</h1>
-    <div class="book">
-      <div class="book__cover">
+    <div class="book-columns">
+      <div class="book-columns__cover">
         <img
-          src="{{ book.coverUrl ?? '/assets/book-cover-not-found.png' }}"
+          src="{{ foundBook.coverUrl ?? '/assets/book-cover-not-found.png' }}"
           alt="book-cover"
         />
       </div>
-      <div class="book__details">
+      <div class="book-columns__details">
         <h2>Specifics:</h2>
         <div class="property">
           <h3 class="name">Title:</h3>
-          <h2 class="value">{{ book.title }}</h2>
+          <h2 class="value">{{ foundBook.title }}</h2>
         </div>
-        <div class="property" *ngIf="book.author">
+        <div class="property" *ngIf="foundBook.author">
           <h4 class="name">Author:</h4>
-          <h3 class="value">{{ book.author }}</h3>
+          <h3 class="value">{{ foundBook.author }}</h3>
         </div>
-        <div class="property" *ngIf="book.pageCount">
+        <div class="property" *ngIf="foundBook.pageCount">
           <h4 class="name">Page count:</h4>
-          <h3 class="value">{{ book.pageCount }}</h3>
+          <h3 class="value">{{ foundBook.pageCount }}</h3>
         </div>
-        <div class="property" *ngIf="book.publicationDate">
+        <div class="property" *ngIf="foundBook.publicationDate">
           <h4 class="name">Publication date:</h4>
-          <h3 class="value">{{ book.publicationDate }}</h3>
+          <h3 class="value">{{ foundBook.publicationDate }}</h3>
         </div>
-        <div class="property" *ngIf="book.rating">
+        <div class="property" *ngIf="foundBook.rating">
           <h4 class="name">Rating:</h4>
-          <h3 class="value">{{ book.rating }}</h3>
+          <h3 class="value">{{ foundBook.rating }}</h3>
         </div>
-        <div class="property" *ngIf="book.quote">
+        <div class="property" *ngIf="foundBook.quote">
           <h4 class="name">Quote:</h4>
-          <h3 class="value">{{ book.quote }}</h3>
+          <h3 class="value">{{ foundBook.quote }}</h3>
         </div>
         <div class="property">
           <h4 class="name">Description:</h4>
-          <p class="value">{{ book.description }}</p>
+          <p class="value">{{ foundBook.description }}</p>
         </div>
         <button class="big-button" routerLink="/app" mat-raised-button>
-          <mat-icon>fast_rewind</mat-icon> Back
+          <mat-icon>fast_rewind</mat-icon>
+          Back
         </button>
       </div>
     </div>

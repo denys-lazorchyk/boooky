@@ -1,7 +1,4 @@
-import { Comment } from './comment';
-
-export interface Book {
-  id: number;
+export interface PreBook {
   title: string;
   description: string;
   pageCount: number;
@@ -9,6 +6,5 @@ export interface Book {
   author?: string;
   rating?: number;
   publicationDate: Date | string;
-  comments?: Comment[];
   coverUrl?: string;
 }

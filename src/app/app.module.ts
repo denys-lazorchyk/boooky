@@ -15,6 +15,7 @@ import { LoginComponent } from './login/login/login.component';
 import { MainComponent } from './main/main.component';
 import { AnimatedBackgroundComponent } from './shared/animated-background/animated-background.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { IfHasRoleDirective } from './services/if-has-role.directive';
 
 //Angular Material Library
 import { MatMenuModule } from '@angular/material/menu';
@@ -25,8 +26,11 @@ import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.co
 import { AppShellComponent } from './app-shell/app-shell.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
-import { IfHasRoleDirective } from './services/if-has-role.directive';
+import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -56,6 +60,11 @@ import { IfHasRoleDirective } from './services/if-has-role.directive';
     MatSnackBarModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatTableModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSliderModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

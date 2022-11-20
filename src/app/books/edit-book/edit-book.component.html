@@ -1,1 +1,117 @@
-<p>edit-book works!</p>
+<div class="boooky-container">
+  <h1>{{ pageTitle }}:</h1>
+</div>
+<div class="boooky-container book-columns reverse">
+  <div class="book-columns__details">
+    <form [formGroup]="form">
+      <mat-form-field class="full-width">
+        <mat-label>Title</mat-label>
+        <input
+          matInput
+          placeholder="Title of the book"
+          formControlName="title"
+        />
+        <mat-error>Title is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Author</mat-label>
+        <input
+          matInput
+          placeholder="Author of the book"
+          formControlName="author"
+        />
+        <mat-error>Author is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Page count</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Page count of the book"
+          formControlName="pageCount"
+        />
+        <mat-error>Page count is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Cover URL</mat-label>
+        <input
+          matInput
+          placeholder="URL of the book cover"
+          formControlName="coverUrl"
+        />
+        <mat-error>Url is invalid</mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="full-width date">
+        <input
+          matInput
+          [matDatepicker]="picker"
+          placeholder="Publication date"
+          formControlName="publicationDate"
+        />
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+
+      <div class="slider">
+        <h6>Rating: {{ ratingValue }}</h6>
+        <mat-slider
+          class="example-margin"
+          [max]="5"
+          [min]="1"
+          [step]="0.1"
+          discrete
+          [displayWith]="formatLabel"
+          formControlName="rating"
+        >
+          <input matSliderThumb />
+        </mat-slider>
+      </div>
+
+      <mat-form-field class="full-width">
+        <mat-label>Quote:</mat-label>
+        <input
+          matInput
+          placeholder="Quote from the book"
+          formControlName="quote"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Description</mat-label>
+        <textarea
+          matInput
+          placeholder="Description of the book"
+          formControlName="description"
+          #textarea
+        ></textarea>
+      </mat-form-field>
+      <button mat-button *ngIf="editBookPage" (click)="resetForm()">
+        <mat-icon>fast_rewind</mat-icon>
+        Cancel
+      </button>
+      <button
+        mat-raised-button
+        [disabled]="form.invalid"
+        (click)="submitForm($event)"
+      >
+        {{ buttonName }}
+        <mat-icon>add_circle_outline</mat-icon>
+      </button>
+    </form>
+  </div>
+  <div class="book-columns__cover">
+    <img
+      [src]="bookCover"
+      alt="book-cover"
+      onerror="this.src='/assets/default-book-cover.png'"
+    />
+  </div>
+</div>

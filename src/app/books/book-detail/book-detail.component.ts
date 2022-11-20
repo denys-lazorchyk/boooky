@@ -15,7 +15,7 @@ export interface SelectItem {
 })
 export class BookDetailComponent implements OnInit {
   selectedId!: number;
-  foundBooks!: Book[];
+  foundBook!: Book | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,12 +26,8 @@ export class BookDetailComponent implements OnInit {
     this.route.paramMap.subscribe((params) => {
       if (/\d/.test(params.get('id') ?? '')) {
         this.selectedId = Number(params.get('id'));
-        this.foundBooks = this.booksService.getBook(this.selectedId);
+        this.foundBook = this.booksService.getBook(this.selectedId);
       }
     });
-  }
-
-  get book(): Book {
-    return this.foundBooks[0];
   }
 }

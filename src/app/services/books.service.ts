@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Book } from '../models/book';
+import { PreBook } from '../models/bookForm';
 
 const testingBooks: Book[] = [
   {
@@ -66,7 +67,6 @@ const testingBooks: Book[] = [
       },
     ],
   },
-
   {
     id: 4,
     title: 'The Lord of the Rings',
@@ -81,7 +81,6 @@ const testingBooks: Book[] = [
       'https://www.norli.no/media/catalog/product/cache/c4a11e66ee9433953f551e1adfcb16b9/9/7/9780261103252_1.jpg',
     comments: [],
   },
-
   {
     id: 5,
     title: 'The Colour of Magic',
@@ -97,7 +96,6 @@ const testingBooks: Book[] = [
       'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1665087276i/601238.jpg',
     comments: [],
   },
-
   {
     id: 6,
     title: "The Hitchhiker's Guide to the Galaxy",
@@ -124,15 +122,22 @@ export class BooksService {
   }
 
   getBook(id: number) {
-    return testingBooks.filter((book) => book.id === id);
+    const index = testingBooks.findIndex((book) => book.id === id);
+    return index > -1 ? testingBooks[index] : undefined;
   }
 
   updateBook(id: number, book: Book) {
-    let index = testingBooks.findIndex((book) => {
-      book.id === id;
-    });
+    console.log(book);
+    console.log(id);
 
-    testingBooks[index] = book;
+    if (id >= 0) {
+      let index = testingBooks.findIndex((book) => book.id === id);
+      console.log(index);
+
+      console.log(testingBooks[index]);
+      testingBooks[index] = book;
+      console.log(testingBooks[index]);
+    }
   }
 
   deleteBook(id: number) {
@@ -143,7 +148,14 @@ export class BooksService {
     testingBooks.splice(index, 1);
   }
 
-  addBook(book: Book) {
-    testingBooks.push(book);
+  addBook(book: PreBook) {
+    let biggest = 0;
+    testingBooks.map((el) => {
+      if (el.id > biggest) biggest = el.id;
+    });
+    testingBooks.push({
+      id: biggest + 1,
+      ...book,
+    });
   }
 }
