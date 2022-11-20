@@ -24,7 +24,7 @@
         </div>
         <div class="property" *ngIf="foundBook.publicationDate">
           <h4 class="name">Publication date:</h4>
-          <h3 class="value">{{ foundBook.publicationDate }}</h3>
+          <h3 class="value">{{ foundBook.publicationDate | date }}</h3>
         </div>
         <div class="property" *ngIf="foundBook.rating">
           <h4 class="name">Rating:</h4>
@@ -38,9 +38,19 @@
           <h4 class="name">Description:</h4>
           <p class="value">{{ foundBook.description }}</p>
         </div>
+
         <button class="big-button" routerLink="/app" mat-raised-button>
           <mat-icon>fast_rewind</mat-icon>
           Back
+        </button>
+
+        <button
+          class="big-button"
+          mat-raised-button
+          routerLink="/app/edit/{{ foundBook.id }}"
+        >
+          <mat-icon>remove_red_eye</mat-icon>
+          Edit
         </button>
       </div>
     </div>

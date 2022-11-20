@@ -97,10 +97,10 @@ export class EditBookComponent implements OnInit, AfterViewInit {
     event.preventDefault();
     event.stopPropagation();
     if (this.editBookPage) {
-      this.booksService.updateBook(
-        this.initialValue?.id || -1,
-        this.form.value
-      );
+      this.booksService.updateBook(this.initialValue?.id || -1, {
+        id: this.initialValue?.id,
+        ...this.form.value,
+      });
       this.changeNavigation('Book was updated');
     } else {
       this.booksService.addBook(this.form.value);

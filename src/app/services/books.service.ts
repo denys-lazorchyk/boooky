@@ -115,47 +115,50 @@ const testingBooks: Book[] = [
   providedIn: 'root',
 })
 export class BooksService {
+  books: Book[] = [...testingBooks];
+
   constructor() {}
 
   getBooks() {
-    return [...testingBooks];
+    return [...this.books];
   }
 
   getBook(id: number) {
-    const index = testingBooks.findIndex((book) => book.id === id);
-    return index > -1 ? testingBooks[index] : undefined;
+    const index = this.books.findIndex((book) => book.id === id);
+    console.log(id);
+    console.log(index);
+    console.log(this.books);
+    console.log(this.books[index]);
+
+    return index > -1 ? this.books[index] : undefined;
   }
 
   updateBook(id: number, book: Book) {
-    console.log(book);
-    console.log(id);
-
     if (id >= 0) {
-      let index = testingBooks.findIndex((book) => book.id === id);
-      console.log(index);
-
-      console.log(testingBooks[index]);
-      testingBooks[index] = book;
-      console.log(testingBooks[index]);
+      let index = this.books.findIndex((book) => book.id === id);
+      if (index > -1) {
+        this.books[index] = { ...book };
+      }
     }
   }
 
   deleteBook(id: number) {
-    let index = testingBooks.findIndex((book) => {
+    let index = this.books.findIndex((book) => {
       book.id === id;
     });
 
-    testingBooks.splice(index, 1);
+    this.books.splice(index, 1);
   }
 
   addBook(book: PreBook) {
     let biggest = 0;
-    testingBooks.map((el) => {
+    this.books.map((el) => {
       if (el.id > biggest) biggest = el.id;
     });
-    testingBooks.push({
+    this.books.push({
       id: biggest + 1,
       ...book,
     });
+    console.log(this.books);
   }
 }

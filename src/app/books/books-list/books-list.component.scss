@@ -1,0 +1,23 @@
+.list {
+  padding: 30px;
+  background-color: white;
+  border-radius: 30px;
+  margin-bottom: 30px;
+
+  mat-card {
+    background-color: #ededed;
+    margin: 5px 0px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    h4 {
+      display: inline-block;
+      margin-bottom: 0px;
+    }
+
+    button {
+      margin-left: 20px;
+    }
+  }
+}
