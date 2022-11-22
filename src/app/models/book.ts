@@ -11,4 +11,5 @@ export interface Book {
   publicationDate: Date | string;
   comments?: Comment[];
   coverUrl?: string;
+  lists?: number[];
 }

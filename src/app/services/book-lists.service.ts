@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
+import { Book } from '../models/book';
 import { BookList } from '../models/bookList';
 
 const testingLists: BookList[] = [
   {
     id: 1,
-    listName: 'Recommended books:',
+    listName: 'Recommended books',
     books: [
       { id: 4, title: 'Lord of the Rings' },
       { id: 5, title: 'The Colour of the Magic' },
       { id: 6, title: "The Hitchhiker's Guide to the Galaxy" },
     ],
   },
-
   {
     id: 2,
-    listName: 'Added books:',
+    listName: 'Added books',
     books: [
       { id: 1, title: 'Dune' },
       { id: 2, title: '1984' },
@@ -40,15 +40,12 @@ export class BookListsService {
   }
 
   updateList(id: number, list: BookList) {
-    console.log(this.lists);
-
     if (id >= 0) {
       let index = this.lists.findIndex((list) => list.id === id);
       if (index > -1) {
         this.lists[index] = { ...list };
       }
     }
-    console.log(this.lists);
   }
 
   deleteList(id: number) {
@@ -70,6 +67,25 @@ export class BookListsService {
       id: biggest + 1,
       listName: list.title,
       books: [],
+    });
+  }
+
+  updateBookInLists(book: Book, newListsIds: number[]) {
+    this.lists.forEach((list, index) => {
+      let bookIndex = list.books.findIndex((b) => b.id === book.id);
+      if (bookIndex > -1) {
+        this.lists[index].books.splice(bookIndex, 1);
+      }
+    });
+
+    newListsIds.forEach((id) => {
+      let index = this.lists.findIndex((list) => list.id === id);
+      if (index > -1) {
+        this.lists[index].books.push({
+          id: book.id,
+          title: book.title,
+        });
+      }
     });
   }
 }

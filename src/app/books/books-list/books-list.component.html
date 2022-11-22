@@ -2,7 +2,7 @@
   <h1>Book lists:</h1>
   <div class="list" *ngFor="let list of lists">
     <div class="list-name">
-      <h2>{{ list.listName }}</h2>
+      <h2>{{ list.listName }}:</h2>
       <button mat-raised-button routerLink="/app/editList/{{ list.id }}">
         Edit <mat-icon>edit</mat-icon>
       </button>

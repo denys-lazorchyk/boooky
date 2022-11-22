@@ -7,4 +7,5 @@ export interface PreBook {
   rating?: number;
   publicationDate: Date | string;
   coverUrl?: string;
+  lists?: number[];
 }

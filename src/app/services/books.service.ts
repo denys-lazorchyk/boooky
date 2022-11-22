@@ -16,6 +16,7 @@ const testingBooks: Book[] = [
     rating: 4.93,
     coverUrl: 'https://m.media-amazon.com/images/I/513hKKmFzDL._AC_SY1000_.jpg',
     comments: [],
+    lists: [2],
   },
   {
     id: 2,
@@ -38,6 +39,7 @@ const testingBooks: Book[] = [
         rating: 5.0,
       },
     ],
+    lists: [2],
   },
   {
     id: 3,
@@ -66,6 +68,7 @@ const testingBooks: Book[] = [
         rating: 3.0,
       },
     ],
+    lists: [2],
   },
   {
     id: 4,
@@ -80,6 +83,7 @@ const testingBooks: Book[] = [
     coverUrl:
       'https://www.norli.no/media/catalog/product/cache/c4a11e66ee9433953f551e1adfcb16b9/9/7/9780261103252_1.jpg',
     comments: [],
+    lists: [1],
   },
   {
     id: 5,
@@ -95,6 +99,7 @@ const testingBooks: Book[] = [
     coverUrl:
       'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1665087276i/601238.jpg',
     comments: [],
+    lists: [1],
   },
   {
     id: 6,
@@ -108,6 +113,7 @@ const testingBooks: Book[] = [
     rating: 4.76,
     coverUrl: 'https://m.media-amazon.com/images/I/51in2RmPhBS._AC_SY1000_.jpg',
     comments: [],
+    lists: [1],
   },
 ];
 

@@ -93,6 +93,14 @@
           #textarea
         ></textarea>
       </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Lists:</mat-label>
+        <mat-select formControlName="lists" multiple>
+          <mat-option *ngFor="let list of lists" [value]="list.id">{{
+            list.listName
+          }}</mat-option>
+        </mat-select>
+      </mat-form-field>
       <button mat-button *ngIf="editBookPage" (click)="resetForm()">
         <mat-icon>fast_rewind</mat-icon>
         Cancel

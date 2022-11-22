@@ -16,7 +16,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
-import { PreBook } from 'src/app/models/bookForm';
+import { BookList } from 'src/app/models/bookList';
+import { BookListsService } from 'src/app/services/book-lists.service';
 import { BooksService } from 'src/app/services/books.service';
 
 @Component({
@@ -26,21 +27,12 @@ import { BooksService } from 'src/app/services/books.service';
 })
 export class EditBookComponent implements OnInit, AfterViewInit {
   initialValue!: Book | undefined;
-  initialFormValue: PreBook = {
-    title: '',
-    description: '',
-    pageCount: 0,
-    quote: '',
-    author: '',
-    rating: 2.7,
-    publicationDate: new Date(),
-    coverUrl: '',
-  };
   form!: FormGroup;
   editBookPage = false;
   selectedId: number | undefined = undefined;
   pageTitle: string = 'Add book';
   buttonName: string = 'Add book';
+  lists: BookList[];
   @ViewChild('textarea') textarea!: ElementRef;
 
   constructor(
@@ -50,24 +42,15 @@ export class EditBookComponent implements OnInit, AfterViewInit {
     private snackBar: MatSnackBar,
     private domSan: DomSanitizer,
     private renderer: Renderer2,
-    private booksService: BooksService
+    private booksService: BooksService,
+    private bookListsService: BookListsService
   ) {
+    this.lists = this.bookListsService.getBookLists();
     this.route.paramMap.subscribe((params) => {
       if (/\d/.test(params.get('id') ?? '')) {
         this.editBookPage = true;
         this.selectedId = Number(params.get('id'));
         this.initialValue = this.booksService.getBook(this.selectedId);
-        this.initialFormValue = {
-          title: this.initialValue?.title ?? '',
-          description: this.initialValue?.description ?? '',
-          pageCount: this.initialValue?.pageCount ?? 0,
-          quote: this.initialValue?.quote ?? '',
-          author: this.initialValue?.author ?? '',
-          rating: this.initialValue?.rating ?? 2.7,
-          publicationDate: this.initialValue?.publicationDate ?? new Date(),
-          coverUrl: this.initialValue?.coverUrl ?? '',
-        };
-
         if (!this.initialValue) {
           this.changeNavigation();
         }
@@ -96,12 +79,20 @@ export class EditBookComponent implements OnInit, AfterViewInit {
   submitForm(event: any) {
     event.preventDefault();
     event.stopPropagation();
+
     if (this.editBookPage) {
       this.booksService.updateBook(this.initialValue?.id || -1, {
         id: this.initialValue?.id,
         ...this.form.value,
       });
       this.changeNavigation('Book was updated');
+      this.bookListsService.updateBookInLists(
+        {
+          id: this.initialValue?.id,
+          ...this.form.value,
+        },
+        this.listsValue
+      );
     } else {
       this.booksService.addBook(this.form.value);
       this.changeNavigation('Book was added');
@@ -126,6 +117,10 @@ export class EditBookComponent implements OnInit, AfterViewInit {
     return this.form.get('rating')?.value;
   }
 
+  get listsValue() {
+    return this.form.get('lists')?.value;
+  }
+
   private changeNavigation(
     message: string = 'Book is unavalibale for now, try later!'
   ) {
@@ -145,29 +140,33 @@ export class EditBookComponent implements OnInit, AfterViewInit {
 
   private setForm() {
     this.form = this.formBuilder.group({
-      title: new FormControl(this.initialFormValue?.title, Validators.required),
+      title: new FormControl(
+        this.initialValue?.title ?? '',
+        Validators.required
+      ),
       author: new FormControl(
-        this.initialFormValue?.author,
+        this.initialValue?.author ?? '',
         Validators.required
       ),
       pageCount: new FormControl(
-        this.initialFormValue?.pageCount,
+        this.initialValue?.pageCount ?? '',
         Validators.required
       ),
       coverUrl: new FormControl(
-        this.initialFormValue?.coverUrl,
+        this.initialValue?.coverUrl ?? '',
         Validators.pattern(/https:\/\/\S*/)
       ),
       publicationDate: new FormControl(
-        this.initialFormValue?.publicationDate,
+        this.initialValue?.publicationDate ?? new Date(),
         Validators.required
       ),
-      rating: new FormControl(this.initialFormValue?.rating),
-      quote: new FormControl(this.initialFormValue?.quote),
+      rating: new FormControl(this.initialValue?.rating ?? 2.7),
+      quote: new FormControl(this.initialValue?.quote ?? ''),
       description: new FormControl(
-        this.initialFormValue?.description,
+        this.initialValue?.description ?? '',
         Validators.required
       ),
+      lists: new FormControl(this.initialValue?.lists ?? []),
     });
   }
 }

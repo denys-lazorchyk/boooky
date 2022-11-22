@@ -6,13 +6,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Book } from 'src/app/models/book';
-import { PreBook } from 'src/app/models/bookForm';
 import { BookList } from 'src/app/models/bookList';
 import { BookListsService } from 'src/app/services/book-lists.service';
-import { BooksService } from 'src/app/services/books.service';
 
 @Component({
   selector: 'app-edit-books-list',
