@@ -20,4 +20,14 @@
       margin-left: 20px;
     }
   }
+
+  &-name {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    h2 {
+      display: inline-block;
+    }
+  }
 }

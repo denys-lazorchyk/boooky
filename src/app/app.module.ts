@@ -16,6 +16,7 @@ import { MainComponent } from './main/main.component';
 import { AnimatedBackgroundComponent } from './shared/animated-background/animated-background.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { IfHasRoleDirective } from './services/if-has-role.directive';
+import { EditBooksListComponent } from './books/edit-books-list/edit-books-list.component';
 
 //Angular Material Library
 import { MatMenuModule } from '@angular/material/menu';
@@ -32,6 +33,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { MatCardModule } from '@angular/material/card';
     PageNotFoundComponent,
     AppShellComponent,
     IfHasRoleDirective,
+    EditBooksListComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ import { MatCardModule } from '@angular/material/card';
     MatSliderModule,
     FormsModule,
     MatCardModule,
+    MatSelectModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

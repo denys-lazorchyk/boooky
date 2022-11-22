@@ -5,6 +5,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { BooksListComponent } from './books/books-list/books-list.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
+import { EditBooksListComponent } from './books/edit-books-list/edit-books-list.component';
 import { LoginComponent } from './login/login/login.component';
 import { MainComponent } from './main/main.component';
 import { RolesGuard } from './services/roles.guard';
@@ -20,9 +21,11 @@ const routes: Routes = [
     canActivateChild: [AuthGuard],
     children: [
       { path: '', component: MainComponent },
-      { path: 'edit/:id', component: EditBookComponent },
+      { path: 'editBook/:id', component: EditBookComponent },
+      { path: 'editList/:id', component: EditBooksListComponent },
       { path: 'book/:id', component: BookDetailComponent },
       { path: 'addBook', component: EditBookComponent },
+      { path: 'addList', component: EditBooksListComponent },
       {
         path: 'lists',
         component: BooksListComponent,

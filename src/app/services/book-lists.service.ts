@@ -34,8 +34,42 @@ export class BookListsService {
     return [...this.lists];
   }
 
-  getBook(id: number) {
+  getList(id: number) {
     const index = this.lists.findIndex((list) => list.id === id);
     return index > -1 ? this.lists[index] : undefined;
+  }
+
+  updateList(id: number, list: BookList) {
+    console.log(this.lists);
+
+    if (id >= 0) {
+      let index = this.lists.findIndex((list) => list.id === id);
+      if (index > -1) {
+        this.lists[index] = { ...list };
+      }
+    }
+    console.log(this.lists);
+  }
+
+  deleteList(id: number) {
+    let index = this.lists.findIndex((list) => {
+      list.id === id;
+    });
+
+    if (index > -1) {
+      this.lists.splice(index, 1);
+    }
+  }
+
+  addList(list: { title: string }) {
+    let biggest = 0;
+    this.lists.map((el) => {
+      if (el.id > biggest) biggest = el.id;
+    });
+    this.lists.push({
+      id: biggest + 1,
+      listName: list.title,
+      books: [],
+    });
   }
 }

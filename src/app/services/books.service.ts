@@ -125,11 +125,6 @@ export class BooksService {
 
   getBook(id: number) {
     const index = this.books.findIndex((book) => book.id === id);
-    console.log(id);
-    console.log(index);
-    console.log(this.books);
-    console.log(this.books[index]);
-
     return index > -1 ? this.books[index] : undefined;
   }
 
@@ -147,7 +142,9 @@ export class BooksService {
       book.id === id;
     });
 
-    this.books.splice(index, 1);
+    if (index > -1) {
+      this.books.splice(index, 1);
+    }
   }
 
   addBook(book: PreBook) {
@@ -159,6 +156,5 @@ export class BooksService {
       id: biggest + 1,
       ...book,
     });
-    console.log(this.books);
   }
 }

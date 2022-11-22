@@ -1,16 +1,19 @@
 <div class="boooky-container">
   <h1>Book lists:</h1>
   <div class="list" *ngFor="let list of lists">
-    <h2>{{ list.listName }}</h2>
-    <mat-card
-      *ngFor="let book of list.books"
-    >
+    <div class="list-name">
+      <h2>{{ list.listName }}</h2>
+      <button mat-raised-button routerLink="/app/editList/{{ list.id }}">
+        Edit <mat-icon>edit</mat-icon>
+      </button>
+    </div>
+    <mat-card *ngFor="let book of list.books">
       <h4>{{ book.title }}</h4>
       <div class="buttons-holder">
         <button mat-raised-button routerLink="/app/book/{{ book.id }}">
           Details <mat-icon>remove_red_eye</mat-icon>
         </button>
-        <button mat-raised-button routerLink="/app/edit/{{ book.id }}">
+        <button mat-raised-button routerLink="/app/editBook/{{ book.id }}">
           Edit <mat-icon>edit</mat-icon>
         </button>
       </div>

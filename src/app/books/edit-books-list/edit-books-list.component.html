@@ -1,0 +1,41 @@
+<div class="boooky-container">
+  <h1>{{ pageTitle }}:</h1>
+</div>
+<div class="boooky-container book-lists">
+  <form [formGroup]="form">
+    <mat-form-field class="full-width">
+      <mat-label>Title</mat-label>
+      <input matInput placeholder="Books' list title" formControlName="listName" />
+      <mat-error *ngIf="title?.hasError('required')">
+        List title is required
+      </mat-error>
+      <mat-error *ngIf="title?.hasError('maxlength')">
+        Books' list title can exceed 142 characters
+      </mat-error>
+    </mat-form-field>
+
+    <button mat-stroked-button (click)="resetForm()" routerLink="/app">
+      <mat-icon>fast_rewind</mat-icon>
+      Cancel
+    </button>
+    <button
+      mat-raised-button
+      [disabled]="form.invalid"
+      (click)="submitForm($event)"
+    >
+      {{ buttonName }}
+      <mat-icon>add_circle_outline</mat-icon>
+    </button>
+
+    <button
+      class="warning-button"
+      mat-raised-button
+      *ngIf="editListPage"
+      (click)="deleteList()"
+      routerLink="/app"
+    >
+      <mat-icon>fast_rewind</mat-icon>
+      Delete
+    </button>
+  </form>
+</div>
