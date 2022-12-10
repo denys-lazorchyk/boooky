@@ -1,19 +1,16 @@
-.links {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin-right: 12px;
-
-}
-
-.link {
-  margin-right: 10px;
-  cursor: pointer;
-}
-
 .menu {
-  &__holder {
+  display: flex;
+
+  &__links {
     display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-right: 12px;
+
+    .link {
+      margin-right: 10px;
+      cursor: pointer;
+    }
   }
 
   &__user {
