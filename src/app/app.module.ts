@@ -34,6 +34,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
+import { LoginShellComponent } from './login/login-shell/login-shell.component';
+import { ResetComponent } from './login/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +54,8 @@ import { MatSelectModule } from '@angular/material/select';
     AppShellComponent,
     IfHasRoleDirective,
     EditBooksListComponent,
+    LoginShellComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,

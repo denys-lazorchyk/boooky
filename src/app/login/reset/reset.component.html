@@ -1,0 +1,59 @@
+<div class="login--form">
+  <h3>Reset password</h3>
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill">
+        <input
+          matInput
+          type="text"
+          #inputLogin
+          placeholder="Login"
+          formControlName="login"
+        />
+        <mat-error
+          *ngIf="login && login.invalid && (login.dirty || login.touched)"
+        >
+          User name cant be shorter than 5 characters
+        </mat-error>
+      </mat-form-field>
+      <div>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            type="password"
+            placeholder="New password"
+            formControlName="password"
+          />
+          <mat-error
+            class="error-message"
+            *ngIf="password?.invalid && (password?.dirty || password?.touched)"
+          >
+            {{ getErrorMessage() }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <input
+            matInput
+            type="password"
+            placeholder="Repeat new password"
+            formControlName="confirm_password"
+          />
+          <mat-error>
+            Passwords don't match
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="button--holder">
+        <button mat-raised-button routerLink="../login">
+          Back to log in
+        </button>
+        <button
+          mat-raised-button
+          class="primary--button primary--button-high"
+          [disabled]="!form.valid"
+          (click)="resetPassword($event)"
+        >
+          Reset
+        </button>
+      </div>
+    </form>
+</div>

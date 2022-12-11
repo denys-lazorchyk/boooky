@@ -1,72 +1,55 @@
-<div class="login--shell">
-  <div class="login--shell-right">
-    <img src="/assets/logo_3.png" alt="" class="login--form-img" />
-    <div class="login--form">
-      <h3>Log in</h3>
-      <p>
-        You must log in to start working. If you have forgotten your login
-        details, contact the administrator.
-      </p>
-      <form [formGroup]="form">
-        <mat-form-field appearance="fill">
-          <input
-            matInput
-            type="text"
-            placeholder="Login"
-            formControlName="username"
-          />
-          <mat-error
-            *ngIf="
-              username &&
-              username.invalid &&
-              (username.dirty || username.touched)
-            "
-          >
-            Login can't be shorter than 5 characters
-          </mat-error>
-        </mat-form-field>
-        <mat-form-field appearance="fill">
-          <input
-            cksefTogglePasswordVisibility
-            matInput
-            placeholder="Password"
-            formControlName="password"
-            type="password"
-          />
-          <mat-error *ngFor="let validation of validationMessages['password']">
-            <mat-error
-              class="error-message"
-              *ngIf="
-                password?.hasError(validation.type) &&
-                (password?.dirty || password?.touched)
-              "
-            >
-              {{ validation.message }}
-            </mat-error>
-          </mat-error>
-        </mat-form-field>
-        <div class="button--holder">
-          <button
-            mat-raised-button
-            class="primary--button primary--button-high"
-            [disabled]="form.invalid"
-            (click)="submitForm($event)"
-          >
-            Log In
-          </button>
-        </div>
-      </form>
+<div class="login--form">
+  <h3>Log in</h3>
+  <p>
+    You must log in to start working. If you have forgotten your login details,
+    contact the administrator.
+  </p>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <input
+        matInput
+        type="text"
+        placeholder="Login"
+        formControlName="username"
+      />
+      <mat-error
+        *ngIf="
+          username && username.invalid && (username.dirty || username.touched)
+        "
+      >
+        Login can't be shorter than 5 characters
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <input
+        cksefTogglePasswordVisibility
+        matInput
+        placeholder="Password"
+        formControlName="password"
+        type="password"
+      />
+      <mat-error *ngFor="let validation of validationMessages['password']">
+        <mat-error
+          class="error-message"
+          *ngIf="
+            password?.hasError(validation.type) &&
+            (password?.dirty || password?.touched)
+          "
+        >
+          {{ validation.message }}
+        </mat-error>
+      </mat-error>
+    </mat-form-field>
+    <div class="button--holder">
+      <button mat-raised-button routerLink="../reset">Reset password</button>
+      <button
+        mat-raised-button
+        class="primary--button primary--button-high"
+        [disabled]="form.invalid"
+        (click)="submitForm($event)"
+      >
+        Log In
+      </button>
     </div>
-  </div>
-  <div class="login--shell-left">
-    <div>
-      <h1>Welcome in BOOOKY service!</h1>
-      <h3>Service allows:</h3>
-      <ul>
-        <li>Adding nad editing new books.</li>
-        <li>Reviewving and rating added books.</li>
-        <li>Having fun!</li>
-      </ul>
-    </div>
-  </div>
+  </form>
 </div>

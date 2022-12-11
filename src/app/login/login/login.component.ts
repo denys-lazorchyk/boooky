@@ -19,6 +19,7 @@ export interface validationMessagesInterface {
 export class LoginComponent implements OnInit, OnDestroy {
   loginSub!: Subscription;
   form: FormGroup;
+
   validationMessages: validationMessagesInterface = {
     password: [
       { type: 'required', message: 'Password is required' },
