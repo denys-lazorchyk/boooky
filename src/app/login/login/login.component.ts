@@ -13,6 +13,7 @@ export interface validationMessagesInterface {
 })
 export class LoginComponent implements OnInit {
   form: FormGroup;
+
   validationMessages: validationMessagesInterface = {
     password: [
       { type: 'required', message: 'Password is required' },
@@ -30,18 +31,18 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
-
-  submitForm(event: Event) {
-    event.preventDefault();
-    event.stopPropagation();
-  }
-
   get username() {
     return this.form.get('username');
   }
 
   get password() {
     return this.form.get('password');
+  }
+
+  ngOnInit(): void {}
+
+  submitForm(event: Event) {
+    event.preventDefault();
+    event.stopPropagation();
   }
 }

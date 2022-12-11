@@ -26,6 +26,8 @@ import { AppShellComponent } from './app-shell/app-shell.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LoginShellComponent } from './login/login-shell/login-shell.component';
+import { ResetComponent } from './login/reset/reset.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     AnimatedBackgroundComponent,
     PageNotFoundComponent,
     AppShellComponent,
+    LoginShellComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,
