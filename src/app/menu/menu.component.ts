@@ -21,7 +21,7 @@ export class MenuComponent implements OnInit {
       this.name = `${this.userService.user.name} ${this.userService.user.surname}`;
       this.role = this.userService.user.role;
     } else {
-      this.authService.logOut();
+      this.logOut();
     }
   }
 
