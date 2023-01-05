@@ -33,3 +33,23 @@
     height: 300px;
   }
 }
+
+.stepper-from {
+  padding-top: 10px;
+
+  mat-form-field {
+    width: 100%;
+    max-width: 527px;
+    margin: 10px 10px 0px 0px;
+  }
+
+  button {
+    margin-right: 12px;
+  }
+}
+
+.mat-stepper-vertical,
+.mat-stepper-horizontal {
+  border-radius: 14px;
+  overflow: hidden;
+}

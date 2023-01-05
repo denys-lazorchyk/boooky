@@ -32,6 +32,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatStepperModule } from '@angular/material/stepper';
 import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginShellComponent } from './login/login-shell/login-shell.component';
@@ -75,6 +76,7 @@ import { ResetComponent } from './login/reset/reset.component';
     FormsModule,
     MatCardModule,
     MatSelectModule,
+    MatStepperModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

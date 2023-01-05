@@ -232,3 +232,9 @@ h6 {
 .warning-button {
   background-color: #c1063b;
 }
+
+.mat-step-header .mat-step-icon-selected,
+.mat-step-header .mat-step-icon-state-done,
+.mat-step-header .mat-step-icon-state-edit {
+  background-color: var(--yellow_dark);
+}
