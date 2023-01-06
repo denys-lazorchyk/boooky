@@ -238,3 +238,28 @@ h6 {
 .mat-step-header .mat-step-icon-state-edit {
   background-color: var(--yellow_dark);
 }
+
+.button-small-actions {
+  padding: 0px 5px !important;
+  min-width: 42px !important;
+
+  .mat-icon {
+    font-size: 30px;
+    height: 30px;
+    width: 30px;
+  }
+
+  &.positive {
+    color: var(--yellow_dark);
+    background-color: transparent;
+  }
+
+  &.negative {
+    color: #c1063b;
+    background-color: transparent;
+
+    &:hover {
+      color: #c1063b !important;
+    }
+  }
+}

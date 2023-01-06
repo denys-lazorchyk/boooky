@@ -1,0 +1,37 @@
+.commentForm {
+  margin-top: 20px;
+
+  &__holder {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .slider {
+      width: 180px;
+
+      h6 {
+        margin: 0 0 -10px;
+      }
+    }
+
+    .text {
+      flex: 1;
+
+      textarea {
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 10px;
+    margin-bottom: 20px;
+
+    button {
+      margin-right: 14px;
+    }
+  }
+}

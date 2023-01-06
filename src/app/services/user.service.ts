@@ -23,4 +23,8 @@ export class UserService {
 
     return this._user;
   }
+
+  public clearUser() {
+    sessionStorage.removeItem('user');
+  }
 }

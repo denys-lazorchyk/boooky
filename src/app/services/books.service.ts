@@ -33,7 +33,9 @@ const testingBooks: Book[] = [
       'https://emp-scs-uat.img-osdw.pl/img-p/1/kipwn/d576082e/std/2bc-452/951486472o.jpg',
     comments: [
       {
+        id: 1,
         author: 'Denys Lazorchyk',
+        authorId: '1',
         message: 'Ther very best novel I have ever read.',
         publicationDate: 'May 27, 2022',
         rating: 5.0,
@@ -55,13 +57,17 @@ const testingBooks: Book[] = [
     coverUrl: 'https://www.bookcity.pl/bigcovers/9/0/2/1/9780804139021.jpg',
     comments: [
       {
-        author: 'Random Guy',
+        id: 1,
+        author: 'John Smith',
+        authorId: '2',
         message: 'Nothing could not be better than this book.',
         publicationDate: 'May 27, 2022',
         rating: 3.9,
       },
       {
-        author: 'Big dude',
+        id: 2,
+        author: 'Denys Lazorchyk',
+        authorId: '1',
         message:
           'Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quos ipsa inventore architecto, tempora, accusantium non aperiam, fuga cupiditate voluptatibus odio eveniet accusamus sequi quis eligendi nam vitae earum fugiat sed.',
         publicationDate: '2020',
@@ -98,7 +104,25 @@ const testingBooks: Book[] = [
     rating: 4.62,
     coverUrl:
       'https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1665087276i/601238.jpg',
-    comments: [],
+    comments: [
+      {
+        id: 1,
+        author: 'John Smith',
+        authorId: '2',
+        message: 'Some text here is required.',
+        publicationDate: 'yesterday',
+        rating: 2.7,
+      },
+      {
+        id: 2,
+        author: 'Denys Lazorchyk',
+        authorId: '1',
+        message:
+          "However, this project may not the best case for the perspective you are presenting, as it stands with today's technology trends and capabilities (perhaps limitations as well). I hope some day, doing this style of work proves to be more cost effective, as I would love to see more of this style in hopefully even more ambitious productions.",
+        publicationDate: '2 days ago',
+        rating: 5.0,
+      },
+    ],
     lists: [1],
   },
   {

@@ -1,0 +1,52 @@
+<div class="commentForm">
+  <form [formGroup]="form" #myForm="ngForm">
+    <div class="commentForm__holder">
+      <div class="slider">
+        <h6>Rating:</h6>
+        <mat-slider
+          class="example-margin"
+          [max]="5"
+          [min]="1"
+          [step]="0.1"
+          discrete
+          [displayWith]="formatLabel"
+          formControlName="rating"
+        >
+          <input matSliderThumb />
+        </mat-slider>
+      </div>
+
+      <mat-form-field [style.fontSize]="16" appearance="fill" class="text">
+        <mat-label>Comment</mat-label>
+        <textarea
+          matInput
+          cdkTextareaAutosize
+          #autosize="cdkTextareaAutosize"
+          cdkAutosizeMinRows="1"
+          placeholder="Comment for the book"
+          formControlName="comment"
+        ></textarea>
+      </mat-form-field>
+    </div>
+
+    <div class="commentForm__actions">
+      <button
+        mat-raised-button
+        class="warning-button"
+        (click)="editMode ? closedForm.emit(false) : form.reset()"
+      >
+        <mat-icon>clear</mat-icon>
+      </button>
+      <button *ngIf="editMode" mat-raised-button (click)="saveComment()">
+        <mat-icon>done</mat-icon>
+      </button>
+      <button
+        mat-raised-button
+        *ngIf="!editMode"
+        (click)="addComment()"
+      >
+        <mat-icon>add_comment</mat-icon>
+      </button>
+    </div>
+  </form>
+</div>

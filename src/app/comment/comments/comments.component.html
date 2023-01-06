@@ -1,0 +1,16 @@
+<div class="comments__holder" *ngIf="book.comments?.length; else noComments">
+  <app-single-comment
+    *ngFor="let comment of book.comments"
+    [bookId]="book.id"
+    [comment]="comment"
+    (deletedCommentEv)="deleteComment($event)"
+  ></app-single-comment>
+</div>
+<div class="comments__adding">
+  <app-comment-form [bookId]="book.id"></app-comment-form>
+</div>
+<ng-template #noComments>
+  <div class="comments__zero">
+    <h3>No comments to this book!</h3>
+  </div>
+</ng-template>

@@ -37,6 +37,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSelectModule } from '@angular/material/select';
 import { LoginShellComponent } from './login/login-shell/login-shell.component';
 import { ResetComponent } from './login/reset/reset.component';
+import { CommentsComponent } from './comment/comments/comments.component';
+import { SingleCommentComponent } from './comment/single-comment/single-comment.component';
+import { CommentFormComponent } from './comment/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import { ResetComponent } from './login/reset/reset.component';
     EditBooksListComponent,
     LoginShellComponent,
     ResetComponent,
+    CommentsComponent,
+    SingleCommentComponent,
+    CommentFormComponent,
   ],
   imports: [
     BrowserModule,

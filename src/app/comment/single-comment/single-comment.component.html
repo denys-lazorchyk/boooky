@@ -1,0 +1,41 @@
+<div class="comment">
+  <div class="comment__details">
+    <img src="/assets/user-logo.svg" alt="" />
+    <h5>{{ comment.author }}</h5>
+    <div *ngIf="comment.rating" class="comment__rating">
+      <h5>Rating: {{ comment.rating }}</h5>
+    </div>
+  </div>
+  <div class="comment__text">
+    <div class="comment__text__1">
+      <img src="/assets/quote-top.svg" alt="" class="quote" />
+      <p>{{ comment.message }}</p>
+      <img src="/assets/quote-bottom.svg" alt="" class="quote" />
+    </div>
+    <div class="comment__text__2 comment__actions">
+      <button
+        mat-button
+        class="button-small-actions positive"
+        *ngIf="comment.authorId === user.id"
+        (click)="editMode = !editMode"
+      >
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button
+        mat-button
+        class="button-small-actions negative"
+        *IfHasRole
+        (click)="deletedCommentEv.emit(this.comment.id)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>
+<app-comment-form
+  *ngIf="editMode"
+  [bookId]="bookId"
+  [commentId]="comment.id"
+  [editMode]="true"
+  (closedForm)="editMode = false"
+></app-comment-form>
