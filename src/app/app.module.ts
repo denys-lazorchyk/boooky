@@ -9,7 +9,6 @@ import { SearchComponent } from './shared/search/search.component';
 import { EditBookComponent } from './books/edit-book/edit-book.component';
 import { BookDetailComponent } from './books/book-detail/book-detail.component';
 import { BooksListComponent } from './books/books-list/books-list.component';
-import { HeaderComponent } from './header/header.component';
 import { MenuComponent } from './menu/menu.component';
 import { LoginComponent } from './login/login/login.component';
 import { MainComponent } from './main/main.component';
@@ -49,7 +48,6 @@ import { CommentFormComponent } from './comment/comment-form/comment-form.compon
     EditBookComponent,
     BookDetailComponent,
     BooksListComponent,
-    HeaderComponent,
     MenuComponent,
     LoginComponent,
     MainComponent,

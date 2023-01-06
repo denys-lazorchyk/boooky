@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  OnDestroy,
   OnInit,
   Renderer2,
   ViewChild,
@@ -15,6 +16,7 @@ import {
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { Book } from 'src/app/models/book';
 import { BookList } from 'src/app/models/bookList';
 import { BookListsService } from 'src/app/services/book-lists.service';
@@ -25,7 +27,7 @@ import { BooksService } from 'src/app/services/books.service';
   templateUrl: './edit-book.component.html',
   styleUrls: ['./edit-book.component.scss'],
 })
-export class EditBookComponent implements OnInit, AfterViewInit {
+export class EditBookComponent implements OnInit, AfterViewInit, OnDestroy {
   initialValue!: Book | undefined;
   form!: FormGroup;
   editBookPage = false;
@@ -33,6 +35,7 @@ export class EditBookComponent implements OnInit, AfterViewInit {
   pageTitle: string = 'Add book';
   buttonName: string = 'Add book';
   lists: BookList[];
+  paramsSub!: Subscription;
   @ViewChild('textarea') textarea!: ElementRef;
 
   constructor(
@@ -46,7 +49,7 @@ export class EditBookComponent implements OnInit, AfterViewInit {
     private bookListsService: BookListsService
   ) {
     this.lists = this.bookListsService.getBookLists();
-    this.route.paramMap.subscribe((params) => {
+    this.paramsSub = this.route.paramMap.subscribe((params) => {
       if (/\d/.test(params.get('id') ?? '')) {
         this.editBookPage = true;
         this.selectedId = Number(params.get('id'));
@@ -69,6 +72,10 @@ export class EditBookComponent implements OnInit, AfterViewInit {
     if (this.initialValue) {
       this.setHeight();
     }
+  }
+
+  ngOnDestroy(): void {
+    this.paramsSub?.unsubscribe();
   }
 
   formatLabel(value: number): string {

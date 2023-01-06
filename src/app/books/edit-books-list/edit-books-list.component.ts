@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { BookList } from 'src/app/models/bookList';
 import { BookListsService } from 'src/app/services/book-lists.service';
 
@@ -15,13 +16,14 @@ import { BookListsService } from 'src/app/services/book-lists.service';
   templateUrl: './edit-books-list.component.html',
   styleUrls: ['./edit-books-list.component.scss'],
 })
-export class EditBooksListComponent implements OnInit {
+export class EditBooksListComponent implements OnInit, OnDestroy {
   initialValue!: BookList | undefined;
   form!: FormGroup;
   editListPage = false;
   selectedId: number | undefined = undefined;
   pageTitle: string = 'Add book list';
   buttonName: string = 'Add list';
+  paramsSub!: Subscription;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -30,7 +32,7 @@ export class EditBooksListComponent implements OnInit {
     private snackBar: MatSnackBar,
     private listsService: BookListsService
   ) {
-    this.route.paramMap.subscribe((params) => {
+    this.paramsSub = this.route.paramMap.subscribe((params) => {
       if (/\d/.test(params.get('id') ?? '')) {
         this.editListPage = true;
         this.selectedId = Number(params.get('id'));
@@ -49,6 +51,10 @@ export class EditBooksListComponent implements OnInit {
   }
 
   ngOnInit(): void {}
+
+  ngOnDestroy(): void {
+    this.paramsSub?.unsubscribe();
+  }
 
   formatLabel(value: number): string {
     let result = `${value}`;

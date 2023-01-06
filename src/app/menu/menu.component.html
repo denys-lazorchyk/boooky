@@ -1,34 +1,49 @@
-<div class="menu">
-  <div class="menu__links">
-    <a
-      routerLink="./lists"
-      routerLinkActive="active"
-      class="link"
-      mat-button
-      *IfHasRole
-    >
-      Book Lists
-    </a>
-    <a routerLink="./addList" routerLinkActive="active" class="link" mat-button>
-      Add List
-    </a>
-    <a routerLink="./addBook" routerLinkActive="active" class="link" mat-button>
-      Add Book
-    </a>
-  </div>
-  <div [matMenuTriggerFor]="menu" class="menu__user">
-    <div class="menu-button">
-      <mat-icon>person</mat-icon>
-      <div class="user">
-        <p class="user-name">{{ name }}</p>
-        <p class="user-role">{{ role | uppercase }}</p>
+<header class="boooky-container">
+  <a routerLink="/app" class="logo">
+    <img src="assets/logo_3.png" alt="Logo" />
+  </a>
+  <div class="menu">
+    <div class="menu__links">
+      <a
+        routerLink="./lists"
+        routerLinkActive="active"
+        class="link"
+        mat-button
+        *IfHasRole
+      >
+        Book Lists
+      </a>
+      <a
+        routerLink="./addList"
+        routerLinkActive="active"
+        class="link"
+        mat-button
+      >
+        Add List
+      </a>
+      <a
+        routerLink="./addBook"
+        routerLinkActive="active"
+        class="link"
+        mat-button
+      >
+        Add Book
+      </a>
+    </div>
+    <div [matMenuTriggerFor]="menu" class="menu__user">
+      <div class="menu-button">
+        <mat-icon>person</mat-icon>
+        <div class="user">
+          <p class="user-name">{{ name }}</p>
+          <p class="user-role">{{ role | uppercase }}</p>
+        </div>
       </div>
     </div>
+    <mat-menu #menu="matMenu" xPosition="after">
+      <button mat-menu-item (click)="logOut()">
+        <mat-icon>cancel</mat-icon>
+        <span>Log out</span>
+      </button>
+    </mat-menu>
   </div>
-  <mat-menu #menu="matMenu" xPosition="after">
-    <button mat-menu-item (click)="logOut()">
-      <mat-icon>cancel</mat-icon>
-      <span>Log out</span>
-    </button>
-  </mat-menu>
-</div>
+</header>

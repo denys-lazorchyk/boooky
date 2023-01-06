@@ -7,10 +7,6 @@ import { AuthService } from 'src/app/auth/auth.service';
 import { MockLoginService } from 'src/app/services/mock-login.service';
 import { UserService } from 'src/app/services/user.service';
 
-export interface validationMessagesInterface {
-  [key: string]: { type: string; message: string }[];
-}
-
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -20,7 +16,9 @@ export class LoginComponent implements OnInit, OnDestroy {
   loginSub!: Subscription;
   form: FormGroup;
 
-  validationMessages: validationMessagesInterface = {
+  validationMessages: {
+    [key: string]: { type: string; message: string }[];
+  } = {
     password: [
       { type: 'required', message: 'Password is required' },
       {
