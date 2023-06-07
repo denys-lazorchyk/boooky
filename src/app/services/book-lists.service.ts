@@ -14,11 +14,23 @@ const testingLists: BookList[] = [
   },
   {
     id: 2,
-    listName: 'Added books',
+    listName: 'Special books',
     books: [
       { id: 1, title: 'Dune' },
       { id: 2, title: '1984' },
       { id: 3, title: 'The Martian' },
+    ],
+  },
+  {
+    id: 3,
+    listName: 'All books',
+    books: [
+      { id: 1, title: 'Dune' },
+      { id: 2, title: '1984' },
+      { id: 3, title: 'The Martian' },
+      { id: 4, title: 'Lord of the Rings' },
+      { id: 5, title: 'The Colour of the Magic' },
+      { id: 6, title: "The Hitchhiker's Guide to the Galaxy" },
     ],
   },
 ];
@@ -58,14 +70,14 @@ export class BookListsService {
     }
   }
 
-  addList(list: { title: string }) {
+  addList(title: string) {
     let biggest = 0;
     this.lists.map((el) => {
       if (el.id > biggest) biggest = el.id;
     });
     this.lists.push({
       id: biggest + 1,
-      listName: list.title,
+      listName: title,
       books: [],
     });
   }
@@ -78,14 +90,31 @@ export class BookListsService {
       }
     });
 
-    newListsIds.forEach((id) => {
-      let index = this.lists.findIndex((list) => list.id === id);
-      if (index > -1) {
-        this.lists[index].books.push({
-          id: book.id,
-          title: book.title,
-        });
-      }
-    });
+    newListsIds.forEach(
+      (id) => this.addBook(book, id)
+      // let index = this.lists.findIndex((list) => list.id === id);
+      // if (index > -1) {
+      //   this.lists[index].books.push({
+      //     id: book.id,
+      //     title: book.title,
+      //   });
+      // }
+    );
+    this.addBook(book, 3);
+  }
+
+  addBookToBookLists(book: Book, listsIds: number[]) {
+    listsIds.forEach((id) => this.addBook(book, id));
+    this.addBook(book, 3);
+  }
+
+  private addBook(book: Book, id: number) {
+    let index = this.lists.findIndex((list) => list.id === id);
+    if (index > -1) {
+      this.lists[index].books.push({
+        id: book.id,
+        title: book.title,
+      });
+    }
   }
 }

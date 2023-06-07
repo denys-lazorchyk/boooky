@@ -96,9 +96,13 @@
       <mat-form-field class="full-width">
         <mat-label>Lists:</mat-label>
         <mat-select formControlName="lists" multiple>
-          <mat-option *ngFor="let list of lists" [value]="list.id">{{
-            list.listName
-          }}</mat-option>
+          <mat-option
+            *ngFor="let list of lists"
+            [value]="list.id"
+            [disabled]="list.id === 3"
+          >
+            {{ list.listName }}
+          </mat-option>
         </mat-select>
       </mat-form-field>
       <button mat-button *ngIf="editBookPage" (click)="resetForm()">

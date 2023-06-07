@@ -72,7 +72,7 @@ export class EditBooksListComponent implements OnInit, OnDestroy {
       });
       this.changeNavigation('List was updated');
     } else {
-      this.listsService.addList(this.form.value);
+      this.listsService.addList(this.form.value.listName);
       this.changeNavigation('List was added');
     }
   }
