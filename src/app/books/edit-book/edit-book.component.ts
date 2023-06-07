@@ -94,7 +94,14 @@ export class EditBookComponent implements OnInit, AfterViewInit {
         this.listsValue
       );
     } else {
-      this.booksService.addBook(this.form.value);
+      const index = this.booksService.addBook(this.form.value);
+      this.bookListsService.addBookToBookLists(
+        {
+          id: index,
+          ...this.form.value,
+        },
+        this.listsValue
+      );
       this.changeNavigation('Book was added');
     }
   }

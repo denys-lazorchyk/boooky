@@ -186,5 +186,6 @@ export class BooksService {
       id: biggest + 1,
       ...book,
     });
+    return biggest + 1;
   }
 }
